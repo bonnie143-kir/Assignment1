@@ -1,0 +1,27 @@
+{
+  "name": "phase1",
+  "version": "1.0.0",
+  "description": "phase1 assignment soft frameworks",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bonnie143-kir/Assignment1.git"
+  },
+  "keywords": [
+    "angular",
+    "node",
+    "mongo"
+  ],
+  "author": "bongraoi arebaio",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bonnie143-kir/Assignment1/issues"
+  },
+  "homepage": "https://github.com/bonnie143-kir/Assignment1#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}

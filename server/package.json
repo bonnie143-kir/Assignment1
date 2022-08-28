@@ -1,0 +1,23 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "server side",
+  "main": "server.js",
+  "scripts": {
+    "test": "test",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bonnie143-kir/Assignment1.git"
+  },
+  "keywords": [
+    "node"
+  ],
+  "author": "bongraoi arebaio",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bonnie143-kir/Assignment1/issues"
+  },
+  "homepage": "https://github.com/bonnie143-kir/Assignment1#readme"
+}
