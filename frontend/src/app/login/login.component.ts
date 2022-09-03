@@ -10,10 +10,15 @@ import { FormsModule } from '@angular/forms';
 export class LoginComponent implements OnInit {
 email = ""
 password = ""
+isLoggedIn = false;
 
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  click() {
+    this.isLoggedIn = true;
   }
 
 }

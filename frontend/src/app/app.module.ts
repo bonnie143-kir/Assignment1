@@ -9,6 +9,7 @@ import { UserComponent } from './user/user.component';
 import { SuperAdminComponent } from './super-admin/super-admin.component';
 import { GroupAdminComponent } from './group-admin/group-admin.component';
 import { GroupAssistComponent } from './group-assist/group-assist.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { GroupAssistComponent } from './group-assist/group-assist.component';
     UserComponent,
     SuperAdminComponent,
     GroupAdminComponent,
-    GroupAssistComponent
+    GroupAssistComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

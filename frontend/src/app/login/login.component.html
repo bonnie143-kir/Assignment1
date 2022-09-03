@@ -1,24 +1,19 @@
 <div class="text-center">
     <img src="/assets/Chatting.jpg"
       style="width: 185px;" alt="logo">
-    <h4 class="mt-1 mb-5 pb-1">Welcome to the ChatApp</h4>
 <div>
+<br>
 
-<div>
-  <form>
-    <p>Please login to your account</p>
+<form>
+    <h4>Please login to your account</h4>
 
-    <div class="form-outline mb-4">
-      <input type="email" [(ngModel)]="email" name="email">
-      <label class="form-label" for="email">Email</label>
-    </div>
+    <input type="email" [(ngModel)]="email" id="form2Example2" name="email" class="form-control" />
+    <label class="form-label" for="form2Example1">Email address</label>
 
-    <div class="form-outline mb-4">
-      <input type="password" [(ngModel)]="password" name="password">
-      <label class="form-label" for="password">Password</label>
-    </div>
+    <input size="25" type="password" [(ngModel)]="password" name="password" id="form2Example2" class="form-control" />
+    <label class="form-label" for="form2Example2">Password</label>
 
-    <div class="text-center pt-1 mb-5 pb-1">
-    </div>
-  </form>
-</div>
+    <br>
+    <button (click)="click()"type="button" class="btn btn-primary btn-block mb-4">Sign in</button>
+    
+</form>
