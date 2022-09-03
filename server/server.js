@@ -11,10 +11,10 @@ app.use(express.static(__dirname + '/dist/frontend'));
 
 app.post('/auth', function(req, res){
     let users = [
-        {'username': 'bongii', 'email': 'bongii@outmail.com', 'password': 'abcd','id': '001', 'role': 'super'},
-        {'username': 'bongraoi', 'email': 'bongraoi@outmail.com', 'password': 'abcd', 'id': '002', 'role': 'user'},
-        {'username': 'bonnie', 'email': 'bonnie@outmail.com', 'password': 'abcd', 'id': '003', 'role': 'groupAd'},
-        {'username': 'bongbong', 'email': 'bongbong@outmail.com', 'password': 'abcd', 'id': '004', 'role': 'groupAs'}
+        {'username': 'bongii', 'email': 'bongii@outmail.com', 'password': 'abcd','id': '001', 'role': 'super', 'valid': true},
+        {'username': 'bongraoi', 'email': 'bongraoi@outmail.com', 'password': 'abcd', 'id': '002', 'role': 'user', 'valid': true},
+        {'username': 'bonnie', 'email': 'bonnie@outmail.com', 'password': 'abcd', 'id': '003', 'role': 'groupAd', 'valid': true},
+        {'username': 'bongbong', 'email': 'bongbong@outmail.com', 'password': 'abcd', 'id': '004', 'role': 'groupAs', 'valid': true}
     ]
 
     var user = {};
