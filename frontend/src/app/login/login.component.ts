@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { JsonPipe } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { Injectable } from '@angular/core';
@@ -14,6 +14,7 @@ const url = 'http://localhost:3000';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent implements OnInit {
 email = ""
 password = ""
@@ -25,7 +26,12 @@ password = ""
 
   click() {
     let user = {'email': this.email, 'password': this.password};
-    this.http.post(url +'/auth', JSON.stringify(user))
+    const headers = new HttpHeaders()
+    .set('AUthorization', 'my-auth-token')
+    .set('Content-Type','application/json');
+    this.http.post(url +'/auth', JSON.stringify(user), {
+      headers: headers
+    })
     .subscribe((data:any)=> {
       if (data.valid == true){
         sessionStorage.setItem('email', data.email);
