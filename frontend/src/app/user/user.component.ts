@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 })
 export class UserComponent implements OnInit {
 
+  isLoggedIn = true;
+  
   constructor(private router: Router) { }
 
   ngOnInit(): void {
