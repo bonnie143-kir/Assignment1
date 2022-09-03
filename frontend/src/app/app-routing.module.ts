@@ -9,9 +9,9 @@ import { GroupAssistComponent } from './group-assist/group-assist.component';
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'user', component: UserComponent},
-  {path: 'superAdmin', component: SuperAdminComponent},
-  {path: 'groupAdmin', component: GroupAdminComponent},
-  {path: 'groupAssist', component: GroupAssistComponent}
+  {path: 'super-admin', component: SuperAdminComponent},
+  {path: 'group-admin', component: GroupAdminComponent},
+  {path: 'group-assist', component: GroupAssistComponent}
 ];
 
 @NgModule({
