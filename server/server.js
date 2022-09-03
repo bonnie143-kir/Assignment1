@@ -7,7 +7,7 @@ const cors = require('cors');
 app.use(cors());
 const { ok } = require('assert');
 
-app.use(express.static(__dirname + '/dist/phase1/'));
+app.use(express.static(__dirname + '/dist/frontend'));
 
 app.post('/auth', function(req, res){
     let users = [

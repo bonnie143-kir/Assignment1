@@ -19,6 +19,7 @@ email = ""
 password = ""
 
   constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router) { }
+  
   ngOnInit(): void {
   }
 
