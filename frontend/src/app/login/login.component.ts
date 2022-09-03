@@ -33,12 +33,24 @@ password = ""
       headers: headers
     })
     .subscribe((data:any)=> {
-      if (data.valid == true){
+      if (data.role == 'super'){
+        sessionStorage.setItem('email', data.email);
+        sessionStorage.setItem('password', data.password);
+        this.router.navigateByUrl('/super-admin');
+      }else if (data.role == 'groupAd') {
+        sessionStorage.setItem('email', data.email);
+        sessionStorage.setItem('password', data.password);
+        this.router.navigateByUrl('/group-admin');
+      }else if (data.role == 'groupAs') {
+        sessionStorage.setItem('email', data.email);
+        sessionStorage.setItem('password', data.password);
+        this.router.navigateByUrl('/group-assist');
+      }else if (data.role == 'user') {
         sessionStorage.setItem('email', data.email);
         sessionStorage.setItem('password', data.password);
         this.router.navigateByUrl('/user');
-      }else {
-        alert('Invalid details');
+      } else {
+        alert('Invalid details'); 
       }
     });
   }
