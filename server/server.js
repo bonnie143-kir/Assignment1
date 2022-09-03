@@ -11,9 +11,10 @@ app.use(express.static(__dirname + '/dist/frontend'));
 
 app.post('/auth', function(req, res){
     let users = [
-        {'username': 'bongii', 'birthdate': '14 Jan', 'age': 23, 'email': 'bongii@outmail.com', 'password': '1234', 'valid': true},
-        {'username': 'bonnie', 'birthdate': '14 Jan', 'age': 23, 'email': 'bonnie@outmail.com', 'password': '567', 'valid': true},
-        {'username': 'bong', 'birthdate': '14 Jan', 'age': 23, 'email': 'bong@outmail.com', 'password': 'abcd', 'valid': true}
+        {'username': 'bongii', 'email': 'bongii@outmail.com', 'password': 'abcd','id': '001', 'role': 'super'},
+        {'username': 'bongraoi', 'email': 'bongraoi@outmail.com', 'password': 'abcd', 'id': '002', 'role': 'user'},
+        {'username': 'bonnie', 'email': 'bonnie@outmail.com', 'password': 'abcd', 'id': '003', 'role': 'groupAd'},
+        {'username': 'bongbong', 'email': 'bongbong@outmail.com', 'password': 'abcd', 'id': '004', 'role': 'groupAs'}
     ]
 
     var user = {};
