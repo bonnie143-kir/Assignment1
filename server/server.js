@@ -1,6 +1,11 @@
 var express = require('express');
 var app = express();
 var http = require('http').Server(app);
+app.use(express.urlencoded({extended:true}));
+app.use(express.json());
+const cors = require('cors');
+app.use(cors());
+const { ok } = require('assert');
 
 app.use(express.static(__dirname + '/dist/phase1/'));
 
@@ -14,7 +19,6 @@ app.post('/auth', function(req, res){
     var user = {};
     user.email = req.body.email;
     user.password = req.body.password;
-    var incorrect = 1;
     console.log(user);
 
     for (let i=0; i<users.length; i++){
