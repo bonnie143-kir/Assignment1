@@ -1,14 +1,51 @@
-<nav class= "navbar navbar-default">
-  <div class="container-fluid">
-    <ul class="nav navbar-nav">
-      <li> <a class="nav-link" routerLink="/login">Login</a></li>
-      <li> <a class="nav-link" routerLink="/user">User</a></li>
-      <li> <a class="nav-link" routerLink="/super-admin">Super Admin</a></li>
-    </ul>
-  </div>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="/styles.css" rel="stylesheet">
+    <title>Phase1 assignment</title>
+  </head>
+  <body>
+    <div class="site-mobile-menu">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+    <header class="site-navbar" role="banner">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-11 col-xl-2">
+            <h1 class="mb-0 site-logo"><a href="index.html" class="text-white mb-0">Brand</a></h1>
+          </div>
+          <div class="col-12 col-md-10 d-none d-xl-block">
+            <nav class="site-navigation position-relative text-right" role="navigation">
+              <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
+                <li class="active"><a class="nav-link" routerLink="/"><span>Home</span></a></li>
+                <li><a class="nav-link" routerLink="/login"><span>Login</span></a></li>
+                <li><a class="nav-link" routerLink="/user"><span>User</span></a></li>
+                <li><a class="nav-link" routerLink="/super-admin"><span>SuperAdmin</span></a></li>
+              </ul>
+            </nav>
+          </div>
+          <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle text-white"><span class="icon-menu h3"></span></a></div>
+        </div>
+      </div>
+    </header>
 
-  <div class="container">
-    <router-outlet></router-outlet>
-  </div>
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
 
-</nav>
+    <div class="hero" style="background-image:url(images/xhero_1.jpg.pagespeed.ic.IGCCr8gcb6.webp)"></div>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/popper.min.js+bootstrap.min.js+jquery.sticky.js+main.js.pagespeed.jc.wLetq7jFkB.js"></script><script>eval(mod_pagespeed_QqtFFjoEty);</script>
+    <script>eval(mod_pagespeed_9zvft6xGWC);</script>
+    <script>eval(mod_pagespeed_tdIZy70QAh);</script>
+    <script>eval(mod_pagespeed_mcQ5Rfecck);</script>
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194" integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==" data-cf-beacon='{"rayId":"744a939e8dea32a4","token":"cd0b4b3a733644fc843ef0b185f98241","version":"2022.8.1","si":100}' crossorigin="anonymous"></script>
+  </body>
+</html>
