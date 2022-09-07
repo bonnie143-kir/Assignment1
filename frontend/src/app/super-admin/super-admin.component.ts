@@ -33,6 +33,19 @@ export class SuperAdminComponent implements OnInit {
 
   delete() {
     let userid = {'id': this.id}
+    const headers = new HttpHeaders()
+    .set('AUthorization', 'my-auth-token')
+    .set('Content-Type','application/json');
+    this.http.post(url + '/deleteUser', JSON.stringify(userid), {headers:headers})
+    .subscribe((data:any)=> {
+      if (data.value == "Exists"){
+        alert('This user already exists!')
+        this.router.navigateByUrl('/super-admin')
+      }else if (data.value == "Added") {
+        alert('The user has been added')
+        this.router.navigateByUrl('/login')
+      }
+    });
   }
 
 }
