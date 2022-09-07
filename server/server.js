@@ -52,6 +52,8 @@ app.post('/createUser', function(req, res){
                 res.send({"value":"Exists"});
                 break;
             }else if (req.body.email != usersList[i].email && req.body.username != usersList[i].username && i == usersList.length){
+                continue;
+            } else{
                 obj = {"id": usersList.length, "username": req.body.username, "email": req.body.email, "password": "abcd", "role": "normalUser", "valid": true}
                 usersList.push(obj);
                 var json = JSON.stringify(uArray);
@@ -63,8 +65,7 @@ app.post('/createUser', function(req, res){
                     } 
                 });
                 res.send({"value":"Added"});
-            }else{
-                continue;
+                break;
             }
         }
     });   
