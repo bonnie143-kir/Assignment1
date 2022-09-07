@@ -11,6 +11,7 @@ import { SuperAdminComponent } from './super-admin/super-admin.component';
 import { GroupAdminComponent } from './group-admin/group-admin.component';
 import { GroupAssistComponent } from './group-assist/group-assist.component';
 import { HomeComponent } from './home/home.component';
+import { NormalUserComponent } from './normal-user/normal-user.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HomeComponent } from './home/home.component';
     SuperAdminComponent,
     GroupAdminComponent,
     GroupAssistComponent,
-    HomeComponent
+    HomeComponent,
+    NormalUserComponent
   ],
   imports: [
     BrowserModule,
