@@ -39,6 +39,7 @@ password = ""
         localStorage.setItem('role', data.role);
         localStorage.setItem('id', data.id);
         localStorage.setItem('username', data.username);
+        localStorage.setItem('show', 'false');
         this.router.navigateByUrl('/super-admin');
       }else if (data.role == 'groupAd') {
         localStorage.setItem('email', data.email);
@@ -46,6 +47,7 @@ password = ""
         localStorage.setItem('role', data.role);
         localStorage.setItem('id', data.id);
         localStorage.setItem('username', data.username);
+        localStorage.setItem('show', 'false');
         this.router.navigateByUrl('/group-admin');
       }else if (data.role == 'groupAs') {
         localStorage.setItem('email', data.email);
@@ -53,6 +55,7 @@ password = ""
         localStorage.setItem('role', data.role);
         localStorage.setItem('id', data.id);
         localStorage.setItem('username', data.username);
+        localStorage.setItem('show', 'false');
         this.router.navigateByUrl('/group-assist');
       }else if (data.role == 'user') {
         localStorage.setItem('email', data.email);
@@ -60,6 +63,7 @@ password = ""
         localStorage.setItem('role', data.role);
         localStorage.setItem('id', data.id);
         localStorage.setItem('username', data.username);
+        localStorage.setItem('show', 'false');
         this.router.navigateByUrl('/user');
       } else if (data.length == 0) {
         alert('Invalid details'); 
