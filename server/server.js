@@ -43,21 +43,24 @@ app.post('/createUser', function(req, res){
 
         var user = {};
         user.email = req.body.email;
-        user.password = req.body.username;
+        user.username = req.body.username;
         console.log(user);
-        emails = [];
-        usernames = [];
-
-        for (let i=0; i<usersList.length; i++){
-            emails.push(usersList[i].email);
-            usernames.push(usersList[i].username);
-        }
         
-        for (let i=0; i<emails.length; i++){
-            if (req.body.email == emails[i] && req.body.username == usernames[i]){
+        for (let i=0; i<usersList.length; i++){
+            if (req.body.email == usersList[i].email && req.body.username == usersList[i].username){
                 res.send(err);
             }else{
-                res.send({"value":"Added"});
+                obj = {"id": usersList.length, "username": req.body.username, "email": req.body.email, "password": "abcd", "role": "User", "valid": true}
+                usersList.push(obj);
+                var json = JSON.stringify(uArray, null, 2);
+                fs.appendFile('users.json', json, 'utf-8', (err) =>{
+                if (err){
+                    console.log(err);
+                } else {
+                    console.log('Done');
+                }
+                res.send(usersList);
+            });
             }
         }
     });   
