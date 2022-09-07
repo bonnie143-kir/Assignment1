@@ -7,6 +7,7 @@ const cors = require('cors');
 app.use(cors());
 const { ok } = require('assert');
 const fs = require('fs');
+const { application } = require('express');
 
 app.use(express.static(__dirname + '/dist/frontend'));
 
@@ -27,6 +28,11 @@ app.post('/auth', function(req, res){
             }
         }
     });   
+});
+
+app.post('/setUserPermissions', function(req, res){
+    user = req.body.user;
+    
 });
 
 app.post('/createUser', function(req, res){
