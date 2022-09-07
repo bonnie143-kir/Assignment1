@@ -51,18 +51,22 @@ app.post('/createUser', function(req, res){
             if (req.body.email == usersList[i].email && req.body.username == usersList[i].username){
                 res.send({"value":"Exists"});
                 break;
-            } 
+            }else if (req.body.email != usersList[i].email && req.body.username != usersList[i].username && i == usersList.length){
+                obj = {"id": usersList.length, "username": req.body.username, "email": req.body.email, "password": "abcd", "role": "normalUser", "valid": true}
+                usersList.push(obj);
+                var json = JSON.stringify(uArray);
+                fs.writeFileSync('users.json', json, 'utf-8', (err) =>{
+                    if (err){
+                        console.log(err);
+                    } else {
+                        console.log('Done');
+                    } 
+                });
+                res.send({"value":"Added"});
+            }else{
+                continue;
+            }
         }
-        obj = {"id": usersList.length, "username": req.body.username, "email": req.body.email, "password": "abcd", "role": "normalUser", "valid": true}
-        usersList.push(obj);
-        var json = JSON.stringify(uArray);
-        fs.writeFileSync('users.json', json, 'utf-8', (err) =>{
-        if (err){
-            console.log(err);
-        } else {
-            console.log('Done');
-        } 
-    });
     });   
 });
 

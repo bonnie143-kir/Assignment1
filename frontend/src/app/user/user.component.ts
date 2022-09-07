@@ -27,7 +27,10 @@ export class UserComponent implements OnInit {
 
   createUser(){
     let user = {'email': this.email, 'username': this.username};
-    this.http.post(url + '/createUser', JSON.stringify(user))
+    const headers = new HttpHeaders()
+    .set('AUthorization', 'my-auth-token')
+    .set('Content-Type','application/json');
+    this.http.post(url + '/createUser', JSON.stringify(user), {headers:headers})
     .subscribe((data:any)=> {
       if (data.value == "Exists"){
         alert('This user already exists!')
