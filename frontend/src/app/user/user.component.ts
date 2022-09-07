@@ -27,7 +27,6 @@ export class UserComponent implements OnInit {
 
   createUser(){
     let user = {'email': this.email, 'username': this.username};
-    //console.log(user);
     const headers = new HttpHeaders()
     .set('AUthorization', 'my-auth-token')
     .set('Content-Type','application/json');
