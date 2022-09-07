@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'frontend';
-  nothing = true;
+  starting = true;
   role = "";
   value = "";
 
