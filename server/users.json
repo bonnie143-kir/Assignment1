@@ -1,0 +1,16 @@
+{
+    "users": [
+        {"username": "bongii", "email": "bongii@outmail.com", "password": "abcd","id": "1", "role": "super", "valid": true},
+        {"username": "bongraoi", "email": "bongraoi@outmail.com", "password": "abcd","id": "2", "role": "user", "valid": true},
+        {"username": "bonnie", "email": "bonnieoutmail.com", "password": "abcd","id": "3", "role": "groupAd", "valid": true},
+        {"username": "bongbong", "email": "bongbong@outmail.com", "password": "abcd","id": "4", "role": "groupAs", "valid": true}
+    ],
+
+    "groups": [
+        {"groupName": "Course 2333ENG", "id": "A", "users": [], "channels":[]}
+    ],
+
+    "channels": [
+        {"channelName": "Assignment channel", "id": "A", "groupID": "groupID"}
+    ]
+}
