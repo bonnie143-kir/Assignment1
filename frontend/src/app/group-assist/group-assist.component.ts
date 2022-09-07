@@ -13,4 +13,9 @@ export class GroupAssistComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  logout() {
+    localStorage.clear();
+    this.router.navigateByUrl('/login');
+  }
+
 }
