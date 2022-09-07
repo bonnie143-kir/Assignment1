@@ -30,7 +30,8 @@ export class CreateGroupComponent implements OnInit {
     this.http.post(url + '/createGroup', JSON.stringify(group), {headers:headers})
     .subscribe((data:any)=> {
       if (data.value == "Created"){
-       console.log(data.value); 
+        alert("Group has been created, you will be redirected back to previous page!")
+       this.router.navigateByUrl('/super-admin');
       }
     });
   }

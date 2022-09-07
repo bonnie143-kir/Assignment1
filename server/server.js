@@ -96,17 +96,19 @@ app.post('/createGroup', function(req, res){
     fs.readFile('groups.json', 'utf-8', function(err,data) {
         if (err) throw err;
         gArray = JSON.parse(data);
-        let name = req.body.group;
+        let name = req.body.groupName;
         obj = {"groupName": name, "members":{"users": []}, "channels": []}
         gArray.groups.push(obj);
         var json = JSON.stringify(gArray);
+        res.send({"value":"Created"});
         fs.writeFileSync('groups.json', json, 'utf-8', (err) =>{
+            res.send({"value":"Created"});
             if (err){
                 console.log(err);
+                res.send({"value":"Created"});
             }else{
                 console.log('Done');
-            }
-            res.send({"value":"Created"});
+            } 
         });
     });   
 });
