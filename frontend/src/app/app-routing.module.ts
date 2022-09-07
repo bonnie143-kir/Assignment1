@@ -7,6 +7,7 @@ import { GroupAdminComponent } from './group-admin/group-admin.component';
 import { GroupAssistComponent } from './group-assist/group-assist.component';
 import { HomeComponent } from './home/home.component';
 import { NormalUserComponent } from './normal-user/normal-user.component';
+import { ChatComponent } from './chat/chat.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path: 'group-admin', component: GroupAdminComponent},
   {path: 'group-assist', component: GroupAssistComponent},
   {path: '', component: HomeComponent},
-  {path: 'normalUser', component:NormalUserComponent}
+  {path: 'normalUser', component:NormalUserComponent},
+  {path: 'chat', component:ChatComponent}
 ];
 
 @NgModule({
