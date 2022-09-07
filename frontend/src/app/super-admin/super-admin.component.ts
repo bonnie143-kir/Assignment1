@@ -22,7 +22,7 @@ export class SuperAdminComponent implements OnInit {
     this.router.navigateByUrl('/login');
   }
 
-  profile() {
+  delete() {
     
   }
 
