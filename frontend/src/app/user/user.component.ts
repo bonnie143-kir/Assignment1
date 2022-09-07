@@ -34,24 +34,10 @@ export class UserComponent implements OnInit {
       headers: headers
     })
     .subscribe((data:any)=> {
-      if (data.role == 'super'){
-        localStorage.setItem('email', data.email);
-        localStorage.setItem('password', data.password);
-        localStorage.setItem('role', data.role);
-        localStorage.setItem('id', data.id);
-        localStorage.setItem('username', data.username);
-        localStorage.setItem('show', 'false');
-        this.router.navigateByUrl('/super-admin');
-      }else if (data.role == 'groupAd') {
-        localStorage.setItem('email', data.email);
-        localStorage.setItem('password', data.password);
-        localStorage.setItem('role', data.role);
-        localStorage.setItem('id', data.id);
-        localStorage.setItem('username', data.username);
-        localStorage.setItem('show', 'false');
-        this.router.navigateByUrl('/group-admin');
-      } else if (data.length == 0) {
-        alert('Invalid details'); 
+      if (data == 'User exists'){
+        alert('This user already exists!')
+      }else if (data == 'User added') {
+        alert('The user has been added')
       }
     });
   }
