@@ -2,7 +2,7 @@
 <form>
     <p>
         <label>Username</label>
-        <input type="username" [(ngModel)]="username" name="username">
+        <input type="text" [(ngModel)]="username" name="username">
     </p>
     <p>
         <label>Email</label>
@@ -10,5 +10,5 @@
     </p>
     <div class="text-center pt-1 mb-5 pb-1">
         <button (click)="createUser()">Create User</button>
-      </div>
+    </div>
 </form>

@@ -42,14 +42,16 @@ app.post('/createUser', function(req, res){
         console.log(user);
     
         for (let i=0; i<usersList.length; i++){
-            if (req.body.email == usersList[i].email || req.body.username == usersList[i].username){
+            if (req.body.email == usersList[i].email && req.body.username == usersList[i].username){
                 console.log(usersList[i]);
-                res.send('User exists');   
+                res.send('Exists');  
+                break; 
             }else{
                 obj = {"id": usersList.length + 1, "username": req.body.username, "email": req.body.email, "password": "abcd", "role": "User", "valid": true}
                 objj = JSON.stringify(obj);
                 usersList.push(objj);
-                res.send('User added');
+                console.log(usersList);
+                res.send('Added');
             }
         }
     });   

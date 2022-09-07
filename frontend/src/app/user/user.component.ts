@@ -27,16 +27,15 @@ export class UserComponent implements OnInit {
 
   createUser(){
     let user = {'email': this.email, 'username': this.username};
+    console.log(user);
     const headers = new HttpHeaders()
     .set('AUthorization', 'my-auth-token')
     .set('Content-Type','application/json');
-    this.http.post(url +'/createUser', JSON.stringify(user), {
-      headers: headers
-    })
+    this.http.post(url + '/createUser', JSON.stringify(user), {headers:headers})
     .subscribe((data:any)=> {
-      if (data == 'User exists'){
+      if (data == "Exists"){
         alert('This user already exists!')
-      }else if (data == 'User added') {
+      }else if (data == "Added") {
         alert('The user has been added')
       }
     });
