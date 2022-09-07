@@ -1,13 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormsModule } from '@angular/forms';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { JsonPipe } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
-import { Injectable } from '@angular/core';
-import { response } from 'express';
-
-const url = 'http://localhost:3000';
 
 @Component({
   selector: 'app-group-admin',
@@ -16,7 +8,10 @@ const url = 'http://localhost:3000';
 })
 export class GroupAdminComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router) { }
+  email = "";
+  username = "";
+
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -24,10 +19,6 @@ export class GroupAdminComponent implements OnInit {
   logout() {
     localStorage.clear();
     this.router.navigateByUrl('/login');
-  }
-
-  createUser(){
-    
   }
 
 }

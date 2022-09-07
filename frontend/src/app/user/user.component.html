@@ -1,3 +1,14 @@
-<div *ngIf="isLoggedIn">
-    <h4>This is the user page</h4>
-</div>
+<h1>Create user</h1>
+<form>
+    <p>
+        <label>Username</label>
+        <input type="username" [(ngModel)]="username" name="username">
+    </p>
+    <p>
+        <label>Email</label>
+        <input type="email" [(ngModel)]="email" name="email">
+    </p>
+    <div class="text-center pt-1 mb-5 pb-1">
+        <button (click)="createUser()">Create User</button>
+      </div>
+</form>
