@@ -34,22 +34,22 @@ password = ""
     })
     .subscribe((data:any)=> {
       if (data.role == 'super'){
-        sessionStorage.setItem('email', data.email);
-        sessionStorage.setItem('password', data.password);
+        localStorage.setItem('email', data.email);
+        localStorage.setItem('password', data.password);
         this.router.navigateByUrl('/super-admin');
       }else if (data.role == 'groupAd') {
-        sessionStorage.setItem('email', data.email);
-        sessionStorage.setItem('password', data.password);
+        localStorage.setItem('email', data.email);
+        localStorage.setItem('password', data.password);
         this.router.navigateByUrl('/group-admin');
       }else if (data.role == 'groupAs') {
-        sessionStorage.setItem('email', data.email);
-        sessionStorage.setItem('password', data.password);
+        localStorage.setItem('email', data.email);
+        localStorage.setItem('password', data.password);
         this.router.navigateByUrl('/group-assist');
       }else if (data.role == 'user') {
-        sessionStorage.setItem('email', data.email);
-        sessionStorage.setItem('password', data.password);
+        localStorage.setItem('email', data.email);
+        localStorage.setItem('password', data.password);
         this.router.navigateByUrl('/user');
-      } else {
+      } else if (data.length == 0) {
         alert('Invalid details'); 
       }
     });
