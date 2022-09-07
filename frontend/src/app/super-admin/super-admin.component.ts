@@ -16,7 +16,7 @@ const url = 'http://localhost:3000';
 })
 export class SuperAdminComponent implements OnInit {
 
-  id = "";
+  id = 0;
   constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router) { }
   
   ngOnInit(): void {
@@ -38,13 +38,7 @@ export class SuperAdminComponent implements OnInit {
     .set('Content-Type','application/json');
     this.http.post(url + '/deleteUser', JSON.stringify(userid), {headers:headers})
     .subscribe((data:any)=> {
-      if (data.value == "Exists"){
-        alert('This user already exists!')
-        this.router.navigateByUrl('/super-admin')
-      }else if (data.value == "Added") {
-        alert('The user has been added')
-        this.router.navigateByUrl('/login')
-      }
+      console.log(data);
     });
   }
 

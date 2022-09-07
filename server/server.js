@@ -31,9 +31,30 @@ app.post('/auth', function(req, res){
     });   
 });
 
-app.post('/setUserPermissions', function(req, res){
-    user = req.body.user;
+app.post('/deleteUser', function(req, res){
+    let idd = req.body.userid;
+    fs.readFile('users.json', 'utf-8', function(err,data) {
+        if (err) throw err;
+        uArray = JSON.parse(data);
+        usersList = uArray.users;
     
+        for (let i=0; i<usersList.length; i++){
+            if (idd == usersList[i].id){
+                usersList = usersList.filter(function(returnableObjects){
+                    return returnableObjects.id !== idd;
+                });                
+                usersList = JSON.stringify(usersList);
+                fs.writeFile('users.json', usersList, 'utf-8', (err) =>{
+                    if (err){
+                        console.log(err);
+                    } else {
+                        console.log('Done');
+                    } 
+                });
+                res.send(usersList);
+            }
+        }
+    });
 });
 
 app.post('/createUser', function(req, res){
@@ -51,7 +72,7 @@ app.post('/createUser', function(req, res){
             if (req.body.email == usersList[i].email && req.body.username == usersList[i].username){
                 res.send({"value":"Exists"});
                 break;
-            }else if (req.body.email != usersList[i].email && req.body.username != usersList[i].username && i == usersList.length){
+            }else if (req.body.email != usersList[i].email && req.body.username != usersList[i].username && i >= usersList.length){
                 continue;
             } else{
                 obj = {"id": usersList.length, "username": req.body.username, "email": req.body.email, "password": "abcd", "role": "normalUser", "valid": true}
