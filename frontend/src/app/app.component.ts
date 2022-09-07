@@ -7,5 +7,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'frontend';
-  notLoggedIn = true;
+  show = true;
+  role = "";
+
+  constructor() {
+    this.role = localStorage.getItem('role')!;
+  }
+
+  check() {
+    this.show = false;
+  }
 }
