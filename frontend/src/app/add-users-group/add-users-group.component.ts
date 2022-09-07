@@ -13,4 +13,8 @@ export class AddUsersGroupComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  add(){
+    
+  }
+
 }

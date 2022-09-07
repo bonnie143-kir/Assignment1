@@ -1,1 +1,14 @@
-<p>add-users-group works!</p>
+<h1>This will add existing users to existing groups</h1>
+<form>
+    <p>
+        <label>Username</label>
+        <input type="username" [(ngModel)]="username" name="username">
+    </p>
+    <p>
+        <label>GroupName</label>
+        <input type="text" [(ngModel)]="groupName" name="groupname">
+    </p>
+    <div class="text-center pt-1 mb-5 pb-1">
+        <button (click)="add()">Add to Group</button>
+    </div>
+</form>
