@@ -1,0 +1,9 @@
+{
+    "groups": [
+        {"groupName": "Course 2333ENG", "id": "A", "users": [], "channels":[]}
+    ],
+
+    "channels": [
+        {"channelName": "Assignment channel", "id": "A", "groupID": "groupID"}
+    ]
+}

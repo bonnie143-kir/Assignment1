@@ -6,6 +6,9 @@ app.use(express.json());
 const cors = require('cors');
 app.use(cors());
 const { ok } = require('assert');
+const fs = require('fs');
+// const data = fs.readFile('/users.json', 'utf-8');
+// const obj = JSON.parse(data);
 
 app.use(express.static(__dirname + '/dist/frontend'));
 
@@ -17,18 +20,24 @@ app.post('/auth', function(req, res){
         {'username': 'bongbong', 'email': 'bongbong@outmail.com', 'password': 'abcd', 'id': '004', 'role': 'groupAs', 'valid': true}
     ]
 
-    var user = {};
-    user.email = req.body.email;
-    user.password = req.body.password;
-    console.log(user);
+    fs.readFile('users.json', 'utf-8', function(err,data) {
+        if (err) throw err;
+        uArray = JSON.parse(data);
+        console.log(uArray);
 
-    for (let i=0; i<users.length; i++){
-        if (req.body.email == users[i].email && req.body.password == users[i].password){
-            users[i].valid = true;
-            res.send(users[i]);
-            break;
+        var user = {};
+        user.email = req.body.email;
+        user.password = req.body.password;
+        console.log(user);
+
+        for (let i=0; i<uArray.length; i++){
+            if (req.body.email == uArray[i].email && req.body.password == uArray[i].password){
+                uArray[i].valid = true;
+                res.send(uArray[i]);
+                break;
+            }
         }
-    }   
+    });   
 });
 
 app.listen(3000, ()=>{

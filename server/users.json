@@ -4,13 +4,5 @@
         {"id": "2", "username": "bongraoi", "email": "bongraoi@outmail.com", "password": "abcd", "role": "user", "valid": true},
         {"id": "3", "username": "bonnie", "email": "bonnieoutmail.com", "password": "abcd", "role": "groupAd", "valid": true},
         {"id": "4", "username": "bongbong", "email": "bongbong@outmail.com", "password": "abcd", "role": "groupAs", "valid": true}
-    ],
-
-    "groups": [
-        {"groupName": "Course 2333ENG", "id": "A", "users": [], "channels":[]}
-    ],
-
-    "channels": [
-        {"channelName": "Assignment channel", "id": "A", "groupID": "groupID"}
     ]
 }
