@@ -1,5 +1,6 @@
 {
     "users": [
+        {"id": "0", "username": "admin", "email": "admin@chatting.com", "password": "admin", "role": "super", "valid": true},
         {"id": "1", "username": "bongii", "email": "bongii@outmail.com", "password": "abcd", "role": "super", "valid": true},
         {"id": "2", "username": "bongraoi", "email": "bongraoi@outmail.com", "password": "abcd", "role": "user", "valid": true},
         {"id": "3", "username": "bonnie", "email": "bonnieoutmail.com", "password": "abcd", "role": "groupAd", "valid": true},
