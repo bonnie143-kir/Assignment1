@@ -92,6 +92,25 @@ app.post('/createUser', function(req, res){
     });   
 });
 
+app.post('/createGroup', function(req, res){
+    fs.readFile('groups.json', 'utf-8', function(err,data) {
+        if (err) throw err;
+        gArray = JSON.parse(data);
+        let name = req.body.group;
+        obj = {"groupName": name, "members":{"users": []}, "channels": []}
+        gArray.groups.push(obj);
+        var json = JSON.stringify(gArray);
+        fs.writeFileSync('groups.json', json, 'utf-8', (err) =>{
+            if (err){
+                console.log(err);
+            }else{
+                console.log('Done');
+            }
+            res.send({"value":"Created"});
+        });
+    });   
+});
+
 app.listen(3000, ()=>{
     var d = new Date();
     var n = d.getHours();

@@ -29,12 +29,8 @@ export class CreateGroupComponent implements OnInit {
     .set('Content-Type','application/json');
     this.http.post(url + '/createGroup', JSON.stringify(group), {headers:headers})
     .subscribe((data:any)=> {
-      if (data.value == "Exists"){
-        alert('This user already exists!')
-        this.router.navigateByUrl('/super-admin')
-      }else if (data.value == "Added") {
-        alert('The user has been added')
-        this.router.navigateByUrl('/login')
+      if (data.value == "Created"){
+       console.log(data.value); 
       }
     });
   }
