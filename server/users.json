@@ -1,9 +1,9 @@
 {
     "users": [
-        {"username": "bongii", "email": "bongii@outmail.com", "password": "abcd","id": "1", "role": "super", "valid": true},
-        {"username": "bongraoi", "email": "bongraoi@outmail.com", "password": "abcd","id": "2", "role": "user", "valid": true},
-        {"username": "bonnie", "email": "bonnieoutmail.com", "password": "abcd","id": "3", "role": "groupAd", "valid": true},
-        {"username": "bongbong", "email": "bongbong@outmail.com", "password": "abcd","id": "4", "role": "groupAs", "valid": true}
+        {"id": "1", "username": "bongii", "email": "bongii@outmail.com", "password": "abcd", "role": "super", "valid": true},
+        {"id": "2", "username": "bongraoi", "email": "bongraoi@outmail.com", "password": "abcd", "role": "user", "valid": true},
+        {"id": "3", "username": "bonnie", "email": "bonnieoutmail.com", "password": "abcd", "role": "groupAd", "valid": true},
+        {"id": "4", "username": "bongbong", "email": "bongbong@outmail.com", "password": "abcd", "role": "groupAs", "valid": true}
     ],
 
     "groups": [
