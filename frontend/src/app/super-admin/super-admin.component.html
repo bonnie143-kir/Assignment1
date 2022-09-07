@@ -9,20 +9,21 @@
 
 <body>    
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-      <div class="navbar-nav">
-          <a class="nav-link active" routerLink="/home">Home</a>
+    <div class="navbar" colspan="6">
+          <a class="nav-link active" routerLink="/home">Super Account</a>
           <div class="dropdown">
               <button class="dropbtn">Actions
                 <i class="fa fa-caret-down"></i>
               </button>
               <div class="dropdown-content">
-                <a class="nav-link" routerLink="#">Create User</a>
-                <a class="nav-link" routerLink="#">Remove User</a>
-                <a class="nav-link" routerLink="#">Create Group</a>
-                <a class="nav-link" routerLink="#">Delete Group</a>                   
+                <a class="nav-link" routerLink="#">User actions</a>
+                <a class="nav-link" routerLink="#">Group actions</a>
+                <a class="nav-link" routerLink="#">Other</a>                   
               </div>
           </div>
-      </div>
+          <a class="nav-link active" routerLink="/chat">Chat</a>
+          <a class="nav-link" (click)="logout()">Logout</a>
+    </div>
     </nav> 
 </body>
 </html>

@@ -17,4 +17,13 @@ export class SuperAdminComponent implements OnInit {
     document.getElementById("myDropdown")?.classList.toggle("show");
   }
 
+  logout() {
+    localStorage.clear();
+    this.router.navigateByUrl('/login');
+  }
+
+  profile() {
+    
+  }
+
 }
