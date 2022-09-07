@@ -18,11 +18,10 @@ app.post('/auth', function(req, res){
 
         var user = {};
         user.email = req.body.email;
-        user.password = req.body.password;
         console.log(user);
     
         for (let i=0; i<usersList.length; i++){
-            if (req.body.email == usersList[i].email && req.body.password == usersList[i].password){
+            if (req.body.email == usersList[i].email){
                 console.log(usersList[i]);
                 res.send(usersList[i]);   
             }
@@ -40,23 +39,23 @@ app.post('/createUser', function(req, res){
         user.email = req.body.email;
         user.password = req.body.username;
         console.log(user);
-    
+        emails = [];
+        usernames = [];
+
         for (let i=0; i<usersList.length; i++){
-            if (req.body.email == usersList[i].email && req.body.username == usersList[i].username){
-                console.log(usersList[i]);
-                res.send('Exists');  
-                break; 
+            emails.push(usersList[i].email);
+            usernames.push(usersList[i].username);
+        }
+        
+        for (let i=0; i<emails.length; i++){
+            if (req.body.email == emails[i] && req.body.username == usernames[i]){
+                res.send(err);
             }else{
-                obj = {"id": usersList.length + 1, "username": req.body.username, "email": req.body.email, "password": "abcd", "role": "User", "valid": true}
-                objj = JSON.stringify(obj);
-                usersList.push(objj);
-                console.log(usersList);
-                res.send('Added');
+                res.send({"value":"Added"});
             }
         }
     });   
 });
-
 
 app.listen(3000, ()=>{
     var d = new Date();

@@ -1,9 +1,44 @@
 {
     "users": [
-        {"id": "0", "username": "admin", "email": "admin@chatting.com", "password": "admin", "role": "super", "valid": true},
-        {"id": "1", "username": "bongii", "email": "bongii@outmail.com", "password": "abcd", "role": "super", "valid": true},
-        {"id": "2", "username": "bongraoi", "email": "bongraoi@outmail.com", "password": "abcd", "role": "user", "valid": true},
-        {"id": "3", "username": "bonnie", "email": "bonnie@outmail.com", "password": "abcd", "role": "groupAd", "valid": true},
-        {"id": "4", "username": "bongbong", "email": "bongbong@outmail.com", "password": "abcd", "role": "groupAs", "valid": true}
+        {
+            "id": "0",
+            "username": "admin",
+            "email": "admin@chatting.com",
+            "password": "admin",
+            "role": "super",
+            "valid": true
+          },
+          {
+            "id": "1",
+            "username": "bongii",
+            "email": "bongii@outmail.com",
+            "password": "abcd",
+            "role": "super",
+            "valid": true
+          },
+          {
+            "id": "2",
+            "username": "bongraoi",
+            "email": "bongraoi@outmail.com",
+            "password": "abcd",
+            "role": "user",
+            "valid": true
+          },
+          {
+            "id": "3",
+            "username": "bonnie",
+            "email": "bonnie@outmail.com",
+            "password": "abcd",
+            "role": "groupAd",
+            "valid": true
+          },
+          {
+            "id": "4",
+            "username": "bongbong",
+            "email": "bongbong@outmail.com",
+            "password": "abcd",
+            "role": "groupAs",
+            "valid": true
+          }
     ]
 }

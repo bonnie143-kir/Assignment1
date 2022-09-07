@@ -25,7 +25,7 @@ password = ""
   }
 
   click() {
-    let user = {'email': this.email, 'password': this.password};
+    let user = {'email': this.email};
     const headers = new HttpHeaders()
     .set('AUthorization', 'my-auth-token')
     .set('Content-Type','application/json');
