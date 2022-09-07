@@ -8,6 +8,7 @@ app.use(cors());
 const { ok } = require('assert');
 const fs = require('fs');
 const { application } = require('express');
+const { PassThrough } = require('stream');
 
 app.use(express.static(__dirname + '/dist/frontend'));
 
@@ -48,21 +49,20 @@ app.post('/createUser', function(req, res){
         
         for (let i=0; i<usersList.length; i++){
             if (req.body.email == usersList[i].email && req.body.username == usersList[i].username){
-                res.send(err);
-            }else{
-                obj = {"id": usersList.length, "username": req.body.username, "email": req.body.email, "password": "abcd", "role": "User", "valid": true}
-                usersList.push(obj);
-                var json = JSON.stringify(uArray, null, 2);
-                fs.appendFile('users.json', json, 'utf-8', (err) =>{
-                if (err){
-                    console.log(err);
-                } else {
-                    console.log('Done');
-                }
-                res.send(usersList);
-            });
-            }
+                res.send({"value":"Exists"});
+                break;
+            } 
         }
+        obj = {"id": usersList.length, "username": req.body.username, "email": req.body.email, "password": "abcd", "role": "normalUser", "valid": true}
+        usersList.push(obj);
+        var json = JSON.stringify(uArray);
+        fs.writeFileSync('users.json', json, 'utf-8', (err) =>{
+        if (err){
+            console.log(err);
+        } else {
+            console.log('Done');
+        } 
+    });
     });   
 });
 
