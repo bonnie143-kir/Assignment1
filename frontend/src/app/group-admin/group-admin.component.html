@@ -1,1 +1,29 @@
-<p>group-admin works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>    
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <div class="navbar" colspan="6">
+          <a class="nav-link active" routerLink="/home">Super Account</a>
+          <div class="dropdown">
+              <button class="dropbtn">Actions
+                <i class="fa fa-caret-down"></i>
+              </button>
+              <div class="dropdown-content">
+                <a class="nav-link" routerLink="#">User actions</a>
+                <a class="nav-link" routerLink="#">Group actions</a>
+                <a class="nav-link" routerLink="#">Other</a>                   
+              </div>
+          </div>
+          <a class="nav-link active" routerLink="/chat">Chat</a>
+          <a class="nav-link" (click)="logout()">Logout</a>
+    </div>
+    </nav> 
+</body>
+</html>
