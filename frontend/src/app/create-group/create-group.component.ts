@@ -1,5 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { JsonPipe } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
+import { Injectable } from '@angular/core';
+import { response } from 'express';
+
+const url = 'http://localhost:3000';
 
 @Component({
   selector: 'app-create-group',
@@ -7,10 +15,28 @@ import { Router } from '@angular/router';
   styleUrls: ['./create-group.component.css']
 })
 export class CreateGroupComponent implements OnInit {
-
-  constructor(private router: Router) { }
+  groupName = "";
+  
+  constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  createGroup(){
+    let group = {'groupName': this.groupName};
+    const headers = new HttpHeaders()
+    .set('AUthorization', 'my-auth-token')
+    .set('Content-Type','application/json');
+    this.http.post(url + '/createGroup', JSON.stringify(group), {headers:headers})
+    .subscribe((data:any)=> {
+      if (data.value == "Exists"){
+        alert('This user already exists!')
+        this.router.navigateByUrl('/super-admin')
+      }else if (data.value == "Added") {
+        alert('The user has been added')
+        this.router.navigateByUrl('/login')
+      }
+    });
   }
 
 }
