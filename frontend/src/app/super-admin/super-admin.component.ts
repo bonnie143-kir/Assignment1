@@ -13,4 +13,8 @@ export class SuperAdminComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  myFunction(){
+    document.getElementById("myDropdown")?.classList.toggle("show");
+  }
+
 }
