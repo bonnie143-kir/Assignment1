@@ -13,6 +13,7 @@ import { GroupAssistComponent } from './group-assist/group-assist.component';
 import { HomeComponent } from './home/home.component';
 import { NormalUserComponent } from './normal-user/normal-user.component';
 import { ChatComponent } from './chat/chat.component';
+import { CreateGroupComponent } from './create-group/create-group.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ChatComponent } from './chat/chat.component';
     GroupAssistComponent,
     HomeComponent,
     NormalUserComponent,
-    ChatComponent
+    ChatComponent,
+    CreateGroupComponent
   ],
   imports: [
     BrowserModule,
