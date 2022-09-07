@@ -111,6 +111,46 @@ app.post('/createGroup', function(req, res){
     });   
 });
 
+app.post('/add/user', function(req, res){
+    let gName = req.body.groupName;
+    let uName = req.body.username;
+        
+    fs.readFile('groups.json', 'utf-8', function(err,data){
+        if (err) throw err;
+        gArray = JSON.parse(data);
+        return gArray; 
+    });
+
+    fs.readFile('users.json', 'utf-8', function(err,data){
+        if (err) throw err;
+        uArray = JSON.parse(data);
+        return uArray;
+    });
+
+    if (gArray.groupName == gName){
+        users = uArray.users
+        for (i=0; i<users.length; i++){
+            if (uName == users[i].username){
+                obj = {"id": users[i].id, "username":users[i].username, "email": users[i].email, "role": users[i].role}
+                gArray.groupName.members.users.push(obj);
+                var json = JSON.stringify(gArray);
+                fs.writeFileSync('groups.json', json, 'utf-8', (err) =>{
+                    if (err){
+                        console.log(err);
+                    }else{
+                        console.log('Done');
+                    }
+                    res.send({"value":"Created"});
+                });
+            }
+        }
+        
+    } else{
+        res.send({"value":"Doesn't exist"})
+    }    
+});
+
+
 app.listen(3000, ()=>{
     var d = new Date();
     var n = d.getHours();
