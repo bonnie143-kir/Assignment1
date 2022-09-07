@@ -13,7 +13,7 @@ const routes: Routes = [
   {path: 'super-admin', component: SuperAdminComponent},
   {path: 'group-admin', component: GroupAdminComponent},
   {path: 'group-assist', component: GroupAssistComponent},
-  {path: 'home', component: HomeComponent}
+  {path: '', component: HomeComponent}
 ];
 
 @NgModule({
