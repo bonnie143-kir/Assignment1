@@ -10,13 +10,13 @@
 <body>    
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
     <div class="navbar" colspan="6">
-          <a class="nav-link active" routerLink="/home">Super Account</a>
+          <a class="nav-link active" routerLink="/home">Group Admin Account</a>
           <div class="dropdown">
               <button class="dropbtn">Actions
                 <i class="fa fa-caret-down"></i>
               </button>
               <div class="dropdown-content">
-                <a class="nav-link" routerLink="#">User actions</a>
+                <a class="nav-link" (click)="createUser()">Create User</a>
                 <a class="nav-link" routerLink="#">Group actions</a>
                 <a class="nav-link" routerLink="#">Other</a>                   
               </div>
@@ -25,5 +25,11 @@
           <a class="nav-link" (click)="logout()">Logout</a>
     </div>
     </nav> 
+
+    <h1>This is the Group admin's account</h1>
+    <p>The actions this user is allowed to perform is in the Actions dropdown menu</p>
+    <p>To access chat, click the chat button</p>
+    <p>To logout click Logout and you will be redirected to the login page</p>
+
 </body>
 </html>
