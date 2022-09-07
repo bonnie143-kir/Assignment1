@@ -14,6 +14,7 @@ import { HomeComponent } from './home/home.component';
 import { NormalUserComponent } from './normal-user/normal-user.component';
 import { ChatComponent } from './chat/chat.component';
 import { CreateGroupComponent } from './create-group/create-group.component';
+import { AddUsersGroupComponent } from './add-users-group/add-users-group.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { CreateGroupComponent } from './create-group/create-group.component';
     HomeComponent,
     NormalUserComponent,
     ChatComponent,
-    CreateGroupComponent
+    CreateGroupComponent,
+    AddUsersGroupComponent
   ],
   imports: [
     BrowserModule,
