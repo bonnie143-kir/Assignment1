@@ -10,36 +10,33 @@ import { response } from 'express';
 const url = 'http://localhost:3000';
 
 @Component({
-  selector: 'app-super-admin',
-  templateUrl: './super-admin.component.html',
-  styleUrls: ['./super-admin.component.css']
+  selector: 'app-add-users-group',
+  templateUrl: './add-users-group.component.html',
+  styleUrls: ['./add-users-group.component.css']
 })
-export class SuperAdminComponent implements OnInit {
+export class AddUsersGroupComponent implements OnInit {
 
-  id = 0;
+  username = "";
+  groupName = "";
   constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router) { }
-  
+
   ngOnInit(): void {
   }
 
-  myFunction(){
-    document.getElementById("myDropdown")?.classList.toggle("show");
-  }
-
-  logout() {
-    localStorage.clear();
-    this.router.navigateByUrl('/login');
-  }
-
-  delete() {
-    let userid = {'id': this.id}
+  add(){
+    let user = {'username': this.username, 'groupName': this.groupName};
     const headers = new HttpHeaders()
     .set('AUthorization', 'my-auth-token')
     .set('Content-Type','application/json');
-    this.http.post(url + '/deleteUser', JSON.stringify(userid), {headers:headers})
+    this.http.post(url +'/add/user', JSON.stringify(user), {
+      headers: headers
+    })
     .subscribe((data:any)=> {
-      console.log(data);
+      if (data.value == "Created"){
+        alert('User has been added to group')
+      }else if (data.value == "Doens't exist"){
+        alert('Group does not exist!!')
+      }
     });
   }
-
 }

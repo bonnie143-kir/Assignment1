@@ -8,9 +8,17 @@ import { Router } from '@angular/router';
 })
 export class GroupAdminComponent implements OnInit {
 
+  email = "";
+  username = "";
+
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  logout() {
+    localStorage.clear();
+    this.router.navigateByUrl('/login');
   }
 
 }

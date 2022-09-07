@@ -6,6 +6,10 @@ import { SuperAdminComponent } from './super-admin/super-admin.component';
 import { GroupAdminComponent } from './group-admin/group-admin.component';
 import { GroupAssistComponent } from './group-assist/group-assist.component';
 import { HomeComponent } from './home/home.component';
+import { NormalUserComponent } from './normal-user/normal-user.component';
+import { ChatComponent } from './chat/chat.component';
+import { CreateGroupComponent } from './create-group/create-group.component';
+import { AddUsersGroupComponent } from './add-users-group/add-users-group.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -13,7 +17,11 @@ const routes: Routes = [
   {path: 'super-admin', component: SuperAdminComponent},
   {path: 'group-admin', component: GroupAdminComponent},
   {path: 'group-assist', component: GroupAssistComponent},
-  {path: 'home', component: HomeComponent}
+  {path: '', component: HomeComponent},
+  {path: 'normalUser', component:NormalUserComponent},
+  {path: 'chat', component:ChatComponent},
+  {path: 'create-group', component:CreateGroupComponent},
+  {path: 'add-users-group', component:AddUsersGroupComponent}
 ];
 
 @NgModule({

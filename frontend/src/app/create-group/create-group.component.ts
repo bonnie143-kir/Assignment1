@@ -10,34 +10,28 @@ import { response } from 'express';
 const url = 'http://localhost:3000';
 
 @Component({
-  selector: 'app-user',
-  templateUrl: './user.component.html',
-  styleUrls: ['./user.component.css']
+  selector: 'app-create-group',
+  templateUrl: './create-group.component.html',
+  styleUrls: ['./create-group.component.css']
 })
-export class UserComponent implements OnInit {
-
-  email="";
-  username="";
-  isLoggedIn = true;
+export class CreateGroupComponent implements OnInit {
+  groupName = "";
   
   constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  createUser(){
-    let user = {'email': this.email, 'username': this.username};
+  createGroup(){
+    let group = {'groupName': this.groupName};
     const headers = new HttpHeaders()
     .set('AUthorization', 'my-auth-token')
     .set('Content-Type','application/json');
-    this.http.post(url + '/createUser', JSON.stringify(user), {headers:headers})
+    this.http.post(url + '/createGroup', JSON.stringify(group), {headers:headers})
     .subscribe((data:any)=> {
-      if (data.value == "Exists"){
-        alert('This user already exists!')
-        this.router.navigateByUrl('/super-admin')
-      }else if (data.value == "Added") {
-        alert('The user has been added')
-        this.router.navigateByUrl('/login')
+      if (data.value == "Created"){
+        alert("Group has been created, you will be redirected back to previous page!")
+       this.router.navigateByUrl('/super-admin');
       }
     });
   }

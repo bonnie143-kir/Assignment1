@@ -25,7 +25,7 @@ password = ""
   }
 
   click() {
-    let user = {'email': this.email, 'password': this.password};
+    let user = {'email': this.email};
     const headers = new HttpHeaders()
     .set('AUthorization', 'my-auth-token')
     .set('Content-Type','application/json');
@@ -57,14 +57,14 @@ password = ""
         localStorage.setItem('username', data.username);
         localStorage.setItem('show', 'false');
         this.router.navigateByUrl('/group-assist');
-      }else if (data.role == 'user') {
+      }else if (data.role == 'normalUser') {
         localStorage.setItem('email', data.email);
         localStorage.setItem('password', data.password);
         localStorage.setItem('role', data.role);
         localStorage.setItem('id', data.id);
         localStorage.setItem('username', data.username);
         localStorage.setItem('show', 'false');
-        this.router.navigateByUrl('/user');
+        this.router.navigateByUrl('/normalUser');
       } else if (data.length == 0) {
         alert('Invalid details'); 
       }

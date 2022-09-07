@@ -11,6 +11,10 @@ import { SuperAdminComponent } from './super-admin/super-admin.component';
 import { GroupAdminComponent } from './group-admin/group-admin.component';
 import { GroupAssistComponent } from './group-assist/group-assist.component';
 import { HomeComponent } from './home/home.component';
+import { NormalUserComponent } from './normal-user/normal-user.component';
+import { ChatComponent } from './chat/chat.component';
+import { CreateGroupComponent } from './create-group/create-group.component';
+import { AddUsersGroupComponent } from './add-users-group/add-users-group.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,11 @@ import { HomeComponent } from './home/home.component';
     SuperAdminComponent,
     GroupAdminComponent,
     GroupAssistComponent,
-    HomeComponent
+    HomeComponent,
+    NormalUserComponent,
+    ChatComponent,
+    CreateGroupComponent,
+    AddUsersGroupComponent
   ],
   imports: [
     BrowserModule,
