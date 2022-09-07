@@ -16,6 +16,7 @@ const url = 'http://localhost:3000';
 })
 export class SuperAdminComponent implements OnInit {
 
+  id = "";
   constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router) { }
   
   ngOnInit(): void {
@@ -31,7 +32,7 @@ export class SuperAdminComponent implements OnInit {
   }
 
   delete() {
-    
+    let userid = {'id': this.id}
   }
 
 }
