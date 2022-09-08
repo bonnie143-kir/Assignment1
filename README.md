@@ -29,7 +29,7 @@ For Phase 1, the data are all located on the server side with the views all loca
 **Route**: /auth <br>
 **Method**: POST <br>
 **Parameter**: |username: string| <br>
-**Return**: | If authenticated: {user: {id: number, username: string, email: string, role: string, valid: boolean}| If not authenticated: err|
+**Return**: | If authenticated: {user: {id: number, username: string, email: string, role: string, valid: boolean}| If not authenticated: err|<br>
 **Technical Explanation**: This route takes an email address in the request body and compared to the email addresses in the users.json file which is read first. If there exists a match, the route will return all the parameters of that email but if there is no match, an error message is returned as a response.
 
 ### CreateUser Route
@@ -37,96 +37,96 @@ For Phase 1, the data are all located on the server side with the views all loca
 **Route**: /createUser <br>
 **Method**: POST <br>
 **Parameter**: |username: string|email: string| <br>
-**Return**: | If user already exists: Message saying it Exists is send via res.send() method| If it does not exist: new users: {id: number, username: string, email: string, role: string, valid: boolean}|
-**Technical Explanation**: This route takes an email address and username in the request body and compares it to the usernames and email addresseses in the users.json file which is read first. If there exists a match, the route will return an err message but if there is no match, a user object will be created.<br>
+**Return**: | If user already exists: Message saying it Exists is send via res.send() method| If it does not exist: new users: {id: number, username: string, email: string, role: string, valid: boolean}|<br>
+**Technical Explanation**: This route takes an email address and username in the request body and compares it to the usernames and email addresseses in the users.json file which is read first. If there exists a match, the route will return an err message but if there is no match, a user object will be created.
 
 ### DeleteUser Route
 **Description**: This delete route is deletes an existing user according to the ID provided.<br>
 **Route**: /deleteUser <br>
 **Method**: POST <br>
 **Parameter**: |id: number| <br>
-**Return**: | If id matches an id in users: user object deleted| If not nothing happens|
-**Technical Explanation**: This route takes an id in the request body and by reading the users.json file, the id is compared. If it matches, that user object with that particular id is deleted from the array, otherwise it will return an error message. <br>
+**Return**: | If id matches an id in users: user object deleted| If not nothing happens|<br>
+**Technical Explanation**: This route takes an id in the request body and by reading the users.json file, the id is compared. If it matches, that user object with that particular id is deleted from the array, otherwise it will return an error message. 
 
 ### CreateGroup Route
 **Description**: This route is responsible for creating the group. If not, it displays an error message.<br>
 **Route**: /create/Group <br>
 **Method**: POST <br>
 **Parameter**: |groupName: string<br>
-**Return**: | If no group exists: {groups: {groupName: string, members: {username: string, email: string, role: string, valid: boolean}}}| If group exists: err|
+**Return**: | If no group exists: {groups: {groupName: string, members: {username: string, email: string, role: string, valid: boolean}}}| If group exists: err|<br>
 **Technical Explanation**: This route takes a groupName in the request body and compares it to the groupName in the groups.json file which is read first. If there exists a match, the route will return error but if the parameters of that groupName is similar, an error message is returned as a response.
 
 ### Add User to Group Route
 **Description**: This route is the authentication route that checks if a user exists. If a user exists, then it adds that user to the group but if not, it displays an error message.<br>
-**Route**: /add/user
+**Route**: /add/user <br>
 **Method**: POST <br>
 **Parameter**: |username:string, groupname: string| <br>
-**Return**: | If authenticated: {user: {id: number, username: string, email: string, role: string, valid: boolean}| If not authenticated: err|
+**Return**: | If authenticated: {user: {id: number, username: string, email: string, role: string, valid: boolean}| If not authenticated: err| <br>
 **Technical Explanation**: This route takes in the groupID, loops through the groups in the groups.json and adds the user object to the associated group with that ID.
 
 ### Remove User from Group Route
 **Description**: This route is the authentication route that checks if a user exists in a group. If a user exists, then it needs to delete that user from the group but if not, it displays an error message.<br>
-**Route**: /remove/user
+**Route**: /remove/user <br>
 **Method**: POST <br>
 **Parameter**: |username:string, groupname: string| <br>
-**Return**: | If authenticated: {user: {id: number, username: string, email: string, role: string, valid: boolean}| If not authenticated: err|
-**Technical Explanation**: This route takes in the groupID, loops through the groups in the groups.json and deletes the associated group with that ID.
+**Return**: | If authenticated: {user: {id: number, username: string, email: string, role: string, valid: boolean}| If not authenticated: err| <br>
+**Technical Explanation**: This route takes in the groupID, loops through the groups in the groups.json and deletes the associated user with that ID.
 
 ### Delete Group
 **Description**: This auth route is the authentication route that deletes a group object. <br>
 **Route**: /delete/group <br>
 **Method**: POST <br>
-**Parameter**: |groupName: string|
+**Parameter**: |groupName: string| <br>
 **Return**: | If group exists: group object deleted| Otherwise, return an error message <br>
 **Technical Explanation**: This route takes a groupName in the request body and compared to the groups it is seen if it mateches. If it does, then, the router will return the corresponding page, otherwise an error will be displayed.
 
 ### Create Channel
-**Description**: This auth route is the authentication route that checks if a channel exists or not. 
-**Route**: /create/channel;
+**Description**: This auth route is the authentication route that checks if a channel exists or not. <br>
+**Route**: /create/channel;<br>
 **Method**: POST <br>
-**Parameter**: |channelName: string|
-**Return**: | If doesn't exist: New channel with name and group ID is created. If exist: err!
+**Parameter**: |channelName: string|<br>
+**Return**: | If doesn't exist: New channel with name and group ID is created. If exist: err!<br>
 **Technical Explanation**: This route takes a text in the request body, compared to the email addresses in the users.json file which is read first. If there exists a match, the route will return all the parameters of that email but if there is no match, an error message is returned as a response.
 
 ### Delete channel
-**Description**: This auth route is the authentication route that checks if a channel exists or not. If it does, it will delete the channel that matches it sees.
-**Route**: /delete/channel;
+**Description**: This auth route is the authentication route that checks if a channel exists or not. If it does, it will delete the channel that matches it sees. <br>
+**Route**: /delete/channel;<br>
 **Method**: POST <br>
-**Parameter**: |channelName: string|
-**Return**: | If doesn't exist: New channel with name and group ID is removed. If exists: display message|
-**Technical Explanation**: This route takes a text in the request body, compares it to the channels in the groups.json and then deletes it if there's a match but don't if there's no match <br>
+**Parameter**: |channelName: string|<br>
+**Return**: | If doesn't exist: Nothing. If exists: Delete channel with channelname and group ID|<br>
+**Technical Explanation**: This route takes a text in the request body, compares it to the channels in the groups.json and then deletes it if there's a match but don't if there's no match 
 
 ### Update user role
-**Description**: This auth route is the authentication route that checks what role the use has.
-**Route**: /update/user;
+**Description**: This auth route is the authentication route that checks what role the use has. <br>
+**Route**: /update/user;<br>
 **Method**: POST <br>
-**Parameter**: |role: string|
-**Return**: array with updated role attribute
+**Parameter**: |userid: number, role: string|<br>
+**Return**: array with updated role attribute<br>
 **Technical Explanation**: This route takes an input and compares it to all the parameters in the user object and updates the roles of that user.
 
 ### Add user to channel
-**Description**: This auth route is the authentication route that checks if a channel exists or not and then adds a user to that channel.
-**Route**: /add-user-channel
+**Description**: This auth route is the authentication route that checks if a channel exists or not and then adds a user to that channel.<br>
+**Route**: /add-user-channel<br>
 **Method**: POST <br>
-**Parameter**: |username: string, channelName: string|
-**Return**: | If doesn't exist: err! If exist: Add user to channel
-**Technical Explanation**: This route takes a text in the request body, compared to the email addresses in the users.json file which is read first. If there exists a match, the route will return all the parameters of that email but if there is no match, an error message is returned as a response.
+**Parameter**: |username: string, channelName: string|<br>
+**Return**: | If doesn't exist: Add user to channel |<br>
+**Technical Explanation**: This route takes a text in the request body, compared to the email addresses in the users.json file which is read first. If there exists a match, the route will return all the parameters of that user but if there is no match, an error message is returned as a response.
 
-### Remove user to channel
-**Description**: This auth route is the authentication route that checks if a channel exists or not and then adds a user to that channel.
-**Route**: /remove-user-channel
+### Remove user from channel
+**Description**: This auth route is the authentication route that checks if a channel exists or not and then removes a user from that channel.<br>
+**Route**: /remove-user-channel<br>
 **Method**: POST <br>
-**Parameter**: |username: string, channelName: string|
-**Return**: | If doesn't exist: err! If exist: Add user to channel
-**Technical Explanation**: This route takes a text in the request body, compared to the usernames in the users.json file which is read first. If there exists a match, the route will return all the parameters of that email but if there is no match, an error message is returned as a response.
+**Parameter**: |username: string, channelName: string|<br>
+**Return**: | If username doesn't exist: nothing | If exist: Remove user from channel |<br>
+**Technical Explanation**: This route takes a text in the request body, compared to the usernames in the users.json file which is read first. If there exists a match, the route will delete all the parameters of that username but if there is no match, an error message is returned as a response.
 
 ### Get Users
-**Description**: This auth route retrieves all the user objects and returns them. 
-**Route**: /getUsers;
+**Description**: This auth route retrieves all the user objects and returns them. <br>
+**Route**: /getUsers;<br>
 **Method**: POST <br>
-**Parameter**: |by: string, groupID: number, channelID: number|
-**Return**: | If by is all: users will be return. If by is group or channel:selectedUsers
-**Technical Explanation**: This route takes a text in the request body, compared to the email addresses in the users.json file which is read first. If there exists a match, the route will return all the parameters of that email but if there is no match, an error message is returned as a response.
+**Parameter**: |by: string, groupID: number, channelID: number|<br>
+**Return**: | If by is all: users will be return. If by is group or channel:selectedUsers<br>
+**Technical Explanation**: This route takes a text in the request body, compared to the email addresses in the users.json file which is read first. If there exists a match, the route will return all the parameters of that user but if there is no match, an error message is returned as a response.
 
 ## Angular architecture
 # Components:
