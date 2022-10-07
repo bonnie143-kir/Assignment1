@@ -4,6 +4,15 @@ var http = require('http').Server(app);
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 const cors = require('cors');
+const io = require('socket.io')(http,{
+    cors: { 
+        origin: "http://localhost:4200",
+        methods: ["GET", "POST"]
+    }
+});
+const sockets = require('./socket.js');
+const server = require('./listen.js');
+
 app.use(cors());
 const { ok } = require('assert');
 const fs = require('fs');
@@ -150,11 +159,3 @@ app.post('/add/user', function(req, res){
     });
 
 });
-
-
-app.listen(3000, ()=>{
-    var d = new Date();
-    var n = d.getHours();
-    var m = d.getMinutes();
-    console.log('Server is listening at: ' + n + ':' + m);
-})
