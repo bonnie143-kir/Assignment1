@@ -29,14 +29,14 @@
 
 <form>
     <h4>Please login to your account</h4>
-
-    <input type="email" [(ngModel)]="email" name="email" class="form-control" />
-    <label class="form-label" for="email">Email address</label>
-
-    <input type="password" [(ngModel)]="password" name="password" class="form-control" />
-    <label class="form-label" for="passsword">Password</label>
-
-    <br>
-    <button (click)="click()" class="btn btn-primary btn-block mb-4">Sign in</button>
-    
+    <div id="login">
+      <div id="emai"><input type="email" [(ngModel)]="email" name="email" class="form-control" style="width: 300px"/>
+      <label class="form-label" for="email">Email address</label></div>
+  
+      <div id="pass"><input type="password" [(ngModel)]="password" name="password" class="form-control" style="width: 300px"/>
+      <label class="form-label" for="passsword">Password</label></div>
+  
+      <br>
+      <button (click)="click()" class="btn btn-primary btn-block mb-4">Sign in</button>
+    </div>
 </form>

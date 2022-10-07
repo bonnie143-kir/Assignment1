@@ -1,0 +1,22 @@
+#login {
+    align-items: center;
+    border-style: solid;
+    padding: 10px;
+    text-align: center;
+    align-content: center;
+}
+
+#emai {
+    text-align: center;
+}.form-control{
+    align-items: center;
+    align-content: center;
+}
+
+#pass {
+    text-align: center;
+}
+.form-control{
+    align-items: center;
+    align-content: center;
+}

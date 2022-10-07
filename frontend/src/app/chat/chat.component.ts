@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SocketService } from '../services/socket.service';
+import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,14 +10,31 @@ import { Router } from '@angular/router';
 })
 export class ChatComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  messagecontent:string="";
+  messages: string[] = [];
+  ioConnection:any;
 
-  ngOnInit(): void {
+  constructor(private socketService: SocketService, private router: Router) { }
+
+  ngOnInit(){ this.initIoConnection()
   }
 
-  logout(){
-    localStorage.clear();
-    this.router.navigateByUrl('/login'); 
+  private initIoConnection(){
+    this.socketService.getMessage().subscribe((m:any)=>{
+      this.messages.push(m)
+    });
   }
+
+  chat(){
+    if(this.messagecontent){
+      this.socketService.send(this.messagecontent);
+      this.messagecontent = '';
+    }else{
+      console.log("No message");
+    }
+  }
+
+
 
 }
+
