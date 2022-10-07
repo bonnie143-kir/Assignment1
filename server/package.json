@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/bonnie143-kir/Assignment1#readme",
   "dependencies": {
-    "cors": "^2.8.5"
+    "cors": "^2.8.5",
+    "socket.io": "^4.5.2"
   }
 }

@@ -13,7 +13,10 @@ const io = require('socket.io')(http,{
 const sockets = require('./socket.js');
 const server = require('./listen.js');
 
+const PORT = 3000;
 app.use(cors());
+sockets.connect(io, PORT);
+server.listen(http,PORT);
 const { ok } = require('assert');
 const fs = require('fs');
 const { application } = require('express');
