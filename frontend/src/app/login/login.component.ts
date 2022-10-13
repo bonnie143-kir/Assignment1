@@ -7,8 +7,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { response } from 'express';
 
-const url = 'http://localhost:3000';
-
+//const url = 'http://localhost:3000';
+const url = 'https://s5172569.elf.ict.griffith.edu.au:3000'
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
