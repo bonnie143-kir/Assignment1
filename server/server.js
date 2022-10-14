@@ -41,14 +41,46 @@ Mongo.connect(url, function(err,client){
         {"username": "Tom", "email": "tom@outmail.com", "password": "tom", "role": "groupAd"},
         {"username": "Mary", "email": "mary@outmail.com", "password": "mary", "role": "groupAs"}
     ]
+    db.collection("users").drop();
     db.collection("users").insertMany(obj, function(err,res){
         if (err) throw err;
         console.log("Number of docs inserted: " + res.insertedCount);
     })
+
+    let grpObj = [
+        {"groupName": "Chemistry", "creator": "Admin", "members": [
+            {"username": "Tom", "email": "tom@outmail.com"},
+            {"username": "Mary", "email": "mary@outmail.com"}
+        ]},
+        {"groupName": "Maths", "creator": "Tom", "members": [
+            {"username": "Bongii", "email": "bongii@outmail.com"},
+            {"username": "Mary", "email": "mary@outmail.com"}
+        ]},
+        {"groupName": "Science", "creator": "Admin", "members": [
+            {"username": "Tom", "email": "tom@outmail.com"},
+            {"username": "Mary", "email": "mary@outmail.com"}
+        ]}
+    ]
+    db.collection("groups").drop();
+    db.collection("groups").insertMany(grpObj, function(err, res){
+        if (err) throw err;
+        console.log("Added");
+    })
+
+    let grpChObj = [
+        {"groupName": "Chemistry", "channelName": "Chem101"},
+        {"groupName": "Chemistry", "channelName": "Chem102"},
+        {"groupName": "Chemistry", "channelName": "Chem103"},
+        {"groupName": "Maths", "channelName": "Maths1"},
+        {"groupName": "Maths", "channelName": "Maths2"},
+        {"groupName": "Maths", "channelName": "Maths3"}
+    ]
+    db.collection("channels").drop();
+    db.collection("channels").insertMany(grpChObj, function(err, res){
+        if (err) throw err;
+        console.log("Added");
+    })
 });
-
-
-//app.use(express.static(__dirname + '/dist/frontend'));
 
 app.post('/auth', function(req, res){
     let user = req.body;
@@ -60,11 +92,11 @@ app.post('/auth', function(req, res){
             docs.forEach(doc => {
                 if (doc.email == req.body.email){
                     if (doc.password == req.body.password){
-                        res.send(doc);
                         console.log("Success");
+                        res.send(doc);
                     }else{
+                        res.send("Fail")
                         console.log("Failed, wrong credentials, try again");
-                        res.send("fail");
                     }
                 }else {
                     //
@@ -72,142 +104,55 @@ app.post('/auth', function(req, res){
             });
         });
     });
-
-    // Using json instead of mongo
-    // fs.readFile('users.json', 'utf-8', function(err,data) {
-    //     if (err) throw err;
-    //     uArray = JSON.parse(data);
-    //     usersList = uArray.users;
-
-    //     var user = {};
-    //     user.email = req.body.email;
-    //     console.log(user);
-    
-    //     for (let i=0; i<usersList.length; i++){
-    //         if (req.body.email == usersList[i].email){
-    //             console.log(usersList[i]);
-    //             res.send(usersList[i]);   
-    //         }
-    //     }
-    // });   
 });
 
 app.post('/deleteUser', function(req, res){
     let idd = req.body.userid;
-    fs.readFile('users.json', 'utf-8', function(err,data) {
-        if (err) throw err;
-        uArray = JSON.parse(data);
-        usersList = uArray.users;
-    
-        for (let i=0; i<usersList.length; i++){
-            if (idd == usersList[i].id){
-                usersList = usersList.filter(function(returnableObjects){
-                    return returnableObjects.id !== idd;
-                });                
-                usersList = JSON.stringify(usersList);
-                fs.writeFile('users.json', usersList, 'utf-8', (err) =>{
-                    if (err){
-                        console.log(err);
-                    } else {
-                        console.log('Done');
-                    } 
-                });
-                res.send(usersList);
-            }
-        }
-    });
+    Mongo.connect(url, function(err, client){
+        if(err) throw err;
+        db.collection("users").deleteOne(idd, function(err,obj){
+            if (err) throw err;
+            console.log("delete success");
+        });
+    })
 });
 
 app.post('/createUser', function(req, res){
-    fs.readFile('users.json', 'utf-8', function(err,data) {
+    //using Mongo
+    let user = req.body;
+    console.log(user);
+    Mongo.connect(url, function(err,client){
         if (err) throw err;
-        uArray = JSON.parse(data);
-        usersList = uArray.users;
-
-        var user = {};
-        user.email = req.body.email;
-        user.username = req.body.username;
-        console.log(user);
-        
-        for (let i=0; i<usersList.length; i++){
-            if (req.body.email == usersList[i].email && req.body.username == usersList[i].username){
-                res.send({"value":"Exists"});
-                break;
-            }else if (req.body.email != usersList[i].email && req.body.username != usersList[i].username && i >= usersList.length){
-                continue;
-            } else{
-                obj = {"id": usersList.length, "username": req.body.username, "email": req.body.email, "password": "abcd", "role": "normalUser", "valid": true}
-                usersList.push(obj);
-                var json = JSON.stringify(uArray);
-                fs.writeFileSync('users.json', json, 'utf-8', (err) =>{
-                    if (err){
-                        console.log(err);
-                    } else {
-                        console.log('Done');
-                    } 
-                });
-                res.send({"value":"Added"});
-                break;
-            }
-        }
-    });   
-});
-
-app.post('/createGroup', function(req, res){
-    fs.readFile('groups.json', 'utf-8', function(err,data) {
-        if (err) throw err;
-        gArray = JSON.parse(data);
-        let name = req.body.groupName;
-        obj = {"groupName": name, "members":{"users": []}, "channels": []}
-        gArray.groups.push(obj);
-        var json = JSON.stringify(gArray);
-        res.send({"value":"Created"});
-        fs.writeFileSync('groups.json', json, 'utf-8', (err) =>{
-            res.send({"value":"Created"});
-            if (err){
-                console.log(err);
-                res.send({"value":"Created"});
-            }else{
-                console.log('Done');
-            } 
+        let db = client.db("chatDB"); //create a chat
+        var obj = {username: req.body.username, email: req.body.email, password: req.body.password, role: req.body.role};
+        var arrr = {};
+        db.collection("users").insertOne(obj, function(err, result){
+            console.log("Created user");
+           // res.send("Added");
         });
-    });   
-});
-
-app.post('/add/user', function(req, res){
-    let gName = req.body.groupName;
-    let uName = req.body.username;
-        
-    fs.readFile('groups.json', 'utf-8', function(err,data){
-        if (err) throw err;
-        gArray = JSON.parse(data);
-        fs.readFile('users.json', 'utf-8', function(err,data){
-            if (err) throw err;
-            uArray = JSON.parse(data);
-            for (i=0; i<gArray.groups.length; i++){
-                if (gArray[i].groupName == gName){
-                    users = uArray.users
-                    for (i=0; i<users.length; i++){
-                        if (uName == users[i].username){
-                            obj = {"id": users[i].id, "username":users[i].username, "email": users[i].email, "role": users[i].role}
-                            gArray.groupName.members.users.push(obj);
-                            var json = JSON.stringify(gArray);
-                            fs.writeFileSync('groups.json', json, 'utf-8', (err) =>{
-                                if (err){
-                                    console.log(err);
-                                }else{
-                                    console.log('Done');
-                                }
-                                res.send({"value":"Created"});
-                            });
-                        }
-                    }
-                    
-                } else{
-                    res.send({"value":"Doesn't exist"})
-                }        
-            }
-        });
+        res.send("Added");
     });
-
 });
+
+// app.post('/createGroup', function(req, res){
+//     let user = req.body
+//     Mongo.connect(url, function(err,client){
+//         if (err) throw err;
+//         let db = client.db("chatDB"); //create a chat
+//         var obj = {groupName: user.groupName}
+//         var arrr = {};
+//         db.collection("users").insertOne(obj, function(err, result){
+//             console.log("Created user");
+//             res.send("Added");
+//         });
+//     });
+// });
+
+// app.post('/add/user', function(req, res){
+//     let gName = req.body.groupName;
+//     let uName = req.body.username;
+       
+    
+    
+
+// });
