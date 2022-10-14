@@ -1,6 +1,20 @@
 var express = require('express');
 var app = express();
 var http = require('http').Server(app);
+const bodyParser = require('body-parser');
+var Mongo = require("mongodb").MongoClient;
+const url = 'mongodb://localhost:27017/?readPreference=primary&ssl=false';
+
+app.use(bodyParser.url({extended: true}));
+app.use(body.json());
+
+app.use(function(req, res, next){
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE, OPTIONS");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();    
+});
+
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 const cors = require('cors');
