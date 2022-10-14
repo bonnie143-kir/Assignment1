@@ -10,11 +10,16 @@ import { NormalUserComponent } from './normal-user/normal-user.component';
 import { ChatComponent } from './chat/chat.component';
 import { CreateGroupComponent } from './create-group/create-group.component';
 import { AddUsersGroupComponent } from './add-users-group/add-users-group.component';
+import { UserpageComponent } from './userpage/userpage.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'home', component: HomeComponent},
   {path: 'user', component: UserComponent},
+
+  {path: 'groups/:id', component: UserpageComponent},
+
+  {path: 'groups/:id', component: NormalUserComponent},
   {path: 'super-admin', component: SuperAdminComponent},
   {path: 'group-admin', component: GroupAdminComponent},
   {path: 'group-assist', component: GroupAssistComponent},

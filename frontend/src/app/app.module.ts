@@ -15,6 +15,9 @@ import { NormalUserComponent } from './normal-user/normal-user.component';
 import { ChatComponent } from './chat/chat.component';
 import { CreateGroupComponent } from './create-group/create-group.component';
 import { AddUsersGroupComponent } from './add-users-group/add-users-group.component';
+import { UserpageComponent } from './userpage/userpage.component';
+import { SocketService } from './services/socket.service';
+import { DataService } from './services/data.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,8 @@ import { AddUsersGroupComponent } from './add-users-group/add-users-group.compon
     NormalUserComponent,
     ChatComponent,
     CreateGroupComponent,
-    AddUsersGroupComponent
+    AddUsersGroupComponent,
+    UserpageComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +40,7 @@ import { AddUsersGroupComponent } from './add-users-group/add-users-group.compon
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [SocketService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
