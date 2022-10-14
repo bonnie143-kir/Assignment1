@@ -13,11 +13,11 @@ import { AddUsersGroupComponent } from './add-users-group/add-users-group.compon
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
+  {path: 'home', component: HomeComponent},
   {path: 'user', component: UserComponent},
   {path: 'super-admin', component: SuperAdminComponent},
   {path: 'group-admin', component: GroupAdminComponent},
   {path: 'group-assist', component: GroupAssistComponent},
-  {path: '', component: HomeComponent},
   {path: 'normalUser', component:NormalUserComponent},
   {path: 'chat', component:ChatComponent},
   {path: 'create-group', component:CreateGroupComponent},
