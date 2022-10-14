@@ -10,12 +10,7 @@
 <body>    
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
     <div class="navbar" colspan="6">
-          <a class="nav-link active" routerLink="/home">Super Account</a>
-          <div class="dropdown">
-              <button class="dropbtn">Actions
-                <i class="fa fa-caret-down"></i>
-              </button>
-              <div class="dropdown-content">
+          <a class="nav-link active" routerLink="#">Super Account</a>
                 <a class="nav-link" routerLink="/user">Create User</a>
                 <a class="nav-link">Delete User:
                   <input type="text" [(ngModel)]="id" name="id">
@@ -24,9 +19,6 @@
                 <a class="nav-link" routerLink="/role">Change User Role</a>
                 <a class="nav-link" routerLink="/create-group">Create Group</a>
                 <a class="nav-link" routerLink="/add-users-group">AddUser to Group</a>
-                <a class="nav-link" routerLink="#">Other</a>                   
-              </div>
-          </div>
           <a class="nav-link active" routerLink="/chat">Chat</a>
           <a class="nav-link" (click)="logout()">Logout</a>
     </div>

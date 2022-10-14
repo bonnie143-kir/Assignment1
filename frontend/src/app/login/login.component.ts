@@ -32,7 +32,8 @@ password = ""
      // headers: headers
     })
     .subscribe((data:any)=>{
-      if(data.value = "fail"){
+      console.log(data);
+      if(data.value == "Fail"){
         alert("User does not exist");
         this.router.navigateByUrl('login');
       }else if(data.role == "super"){
