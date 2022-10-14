@@ -134,25 +134,21 @@ app.post('/createUser', function(req, res){
     });
 });
 
-// app.post('/createGroup', function(req, res){
-//     let user = req.body
-//     Mongo.connect(url, function(err,client){
-//         if (err) throw err;
-//         let db = client.db("chatDB"); //create a chat
-//         var obj = {groupName: user.groupName}
-//         var arrr = {};
-//         db.collection("users").insertOne(obj, function(err, result){
-//             console.log("Created user");
-//             res.send("Added");
-//         });
-//     });
-// });
+app.post('/createGroup', function(req, res){
+    let user = req.body
+    Mongo.connect(url, function(err,client){
+        if (err) throw err;
+        let db = client.db("chatDB"); //create a chat
+        var obj = {groupName: user.groupName}
+        var arrr = {};
+        db.collection("users").insertOne(obj, function(err, result){
+            console.log("Created user");
+            res.send("Added");
+        });
+    });
+});
 
 // app.post('/add/user', function(req, res){
 //     let gName = req.body.groupName;
 //     let uName = req.body.username;
-       
-    
-    
-
 // });
