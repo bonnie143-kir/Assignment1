@@ -3,17 +3,7 @@ var app = express();
 var http = require('http').Server(app);
 const bodyParser = require('body-parser');
 var Mongo = require("mongodb").MongoClient;
-const url = 'mongodb://localhost:27017/?readPreference=primary&ssl=false';
-
-app.use(bodyParser.url({extended: true}));
-app.use(body.json());
-
-app.use(function(req, res, next){
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE, OPTIONS");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();    
-});
+const url = 'mongodb://localhost:27017/';
 
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
@@ -27,34 +17,79 @@ const io = require('socket.io')(http,{
 const sockets = require('./socket.js');
 const server = require('./listen.js');
 
+app.use(function(req, res, next){
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE, OPTIONS");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();    
+});
+
 const PORT = 3000;
 app.use(cors());
 sockets.connect(io, PORT);
 server.listen(http,PORT);
 const { ok } = require('assert');
 const fs = require('fs');
-const { application } = require('express');
-const { PassThrough } = require('stream');
 
-app.use(express.static(__dirname + '/dist/frontend'));
+//Initialise some users
+Mongo.connect(url, function(err,client){
+    if (err) throw err;
+    let db = client.db("chatDB"); //create a chat
+    let obj = [
+        {"username": "Bongii", "email": "bongii@outmail.com", "password": "bongii", "role": "user"},
+        {"username": "Admin", "email": "admin@outmail.com", "password": "admin", "role": "super"},
+        {"username": "Tom", "email": "tom@outmail.com", "password": "tom", "role": "groupAd"},
+        {"username": "Mary", "email": "mary@outmail.com", "password": "mary", "role": "groupAs"}
+    ]
+    db.collection("users").insertMany(obj, function(err,res){
+        if (err) throw err;
+        console.log("Number of docs inserted: " + res.insertedCount);
+    })
+});
+
+
+//app.use(express.static(__dirname + '/dist/frontend'));
 
 app.post('/auth', function(req, res){
-    fs.readFile('users.json', 'utf-8', function(err,data) {
+    let user = req.body;
+    //console.log(user);
+    Mongo.connect(url, function(err,client){
         if (err) throw err;
-        uArray = JSON.parse(data);
-        usersList = uArray.users;
+        let db = client.db("chatDB"); //create a chat
+        db.collection("users").find({}).toArray().then(function(docs){
+            docs.forEach(doc => {
+                if (doc.email == req.body.email){
+                    if (doc.password == req.body.password){
+                        res.send(doc);
+                        console.log("Success");
+                    }else{
+                        console.log("Failed, wrong credentials, try again");
+                        res.send("fail");
+                    }
+                }else {
+                    //
+                }
+            });
+        });
+    });
 
-        var user = {};
-        user.email = req.body.email;
-        console.log(user);
+    // Using json instead of mongo
+    // fs.readFile('users.json', 'utf-8', function(err,data) {
+    //     if (err) throw err;
+    //     uArray = JSON.parse(data);
+    //     usersList = uArray.users;
+
+    //     var user = {};
+    //     user.email = req.body.email;
+    //     console.log(user);
     
-        for (let i=0; i<usersList.length; i++){
-            if (req.body.email == usersList[i].email){
-                console.log(usersList[i]);
-                res.send(usersList[i]);   
-            }
-        }
-    });   
+    //     for (let i=0; i<usersList.length; i++){
+    //         if (req.body.email == usersList[i].email){
+    //             console.log(usersList[i]);
+    //             res.send(usersList[i]);   
+    //         }
+    //     }
+    // });   
 });
 
 app.post('/deleteUser', function(req, res){
